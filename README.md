@@ -1,2 +1,2 @@
 # baksos
-Cuma foto-foto baksok.
+Cuma foto-foto baksos.
