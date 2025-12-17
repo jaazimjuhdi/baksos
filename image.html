@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Image</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    html, body { height: 100%; margin: 0; background: #111; }
+    body { display:flex; align-items: center; justify-content:center; }
+    .image-viewer { width: 100%; height: fit-content; margin-top: 2em; display:flex; align-items:center; justify-content:center; }
+    .image-viewer img { max-width: 95%; max-height: 95%; object-fit: contain; display:block; }
+    .close-btn { position: fixed; top: 16px; right: 16px; background: #fff; color:#000; padding:10px 15px; text-decoration:none; border-radius: 50%; font-family: Arial, Helvetica, sans-serif; }
+    .close-btn:hover {
+        background: #dbdbdb;
+    }
+    .close-btn:active {
+        background: #bababa;
+    }
+  </style>
+</head>
+<body>
+  <a class="close-btn" href="gallery.html" aria-label="Close image viewer">X</a>
+  <div class="image-viewer">
+    <img id="fullImage" src="" alt="Full image">
+  </div>
+<script>
+  const params = new URLSearchParams(location.search);
+  const img = params.get('img');
+  const imgEl = document.getElementById('fullImage');
+  if(img) {
+    // Basic safety: avoid full URLs (optional)
+    if(/^(https?:)?\//.test(img) || img.indexOf('..') !== -1) {
+      imgEl.alt = 'Invalid image';
+    } else {
+      imgEl.src = img;
+      imgEl.alt = img;
+    }
+  } else {
+    imgEl.alt = 'No image specified';
+  }
+
+  // Make the close button return to the previous page when possible
+  const closeBtn = document.querySelector('.close-btn');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      // Prefer going back in history; if there's no history, go to gallery.html
+      if (history.length > 1) {
+        history.back();
+      } else {
+        location.href = 'gallery.html';
+      }
+    });
+
+    // Allow closing with Escape key for accessibility
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        // simulate the same behavior as click
+        if (history.length > 1) history.back(); else location.href = 'gallery.html';
+      }
+    });
+  }
+</script>
+</body>
+</html>

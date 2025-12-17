@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Pacitan — Gallery</title>
+</head>
+<body>
+  <nav class="nav-bar">
+    <div class="nav-box">
+      <a class="nl-1" href="index.html">HOME</a>
+      <a class="nl-2" href="gallery.html" style="text-decoration: underline;">GALLERY</a>
+      <a class="nl-3" href="social.html">SOCIAL MEDIA</a>
+    </div>
+  </nav> 
+  <div class="main-page">
+    <div class="main-nav">
+      <div class="container">
+            <a href="gallery.html">Semua</a>
+            <span>/</span>
+            <a href="tulukan.html">Tulakan</a>
+            <span>/</span>
+            <a href="pacitan.html" class="active" aria-current="page">Pacitan</a>
+        </div>
+    </div>
+    <div class="keterangan">Tekan gambar untuk resolusi penuh</div>
+
+    <h2 style="padding: 20px; font-family: Arial, Helvetica, sans-serif;">Pacitan</h2>
+
+    <!-- Use thumbnails for faster previews -->
+    <div class="gallery">
+      <a class="gallery-item" href="image.html?img=city.png">
+        <img loading="lazy" decoding="async" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-full="city.png" onerror="this.onerror=null;this.src=this.dataset.full;"
+             srcset="thumbs/city-400.jpg 400w, city.png 1200w"
+             sizes="(max-width:600px) 80vw, 200px" alt="city">
+      </a>
+      <a class="gallery-item" href="image.html?img=city.png">
+        <img loading="lazy" decoding="async" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-full="city.png" onerror="this.onerror=null;this.src=this.dataset.full;"
+             srcset="thumbs/city-400.jpg 400w, city.png 1200w"
+             sizes="(max-width:600px) 80vw, 200px" alt="city">
+      </a>
+    </div>
+  </div>
+  <script src="scripts/image-loader.js" defer></script>
+</body>
+</html>
