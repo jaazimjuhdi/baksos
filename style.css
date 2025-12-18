@@ -1,18 +1,26 @@
 * {
     margin: 0;
     padding: 0;
+    color: #fff;
 }
 
 html, body {
     height: 100%;
 }
 
+body{
+    background-image: url(sawah.jpg);
+    background-blend-mode: darken;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
 .nav-bar {
     width: 100%;
     height: fit-content;
-    border-bottom: 1px solid #000;
     display: flex;
     justify-content: center;
+    background: linear-gradient(#00000081, #00000023, #00000000);
 }
 
 .nav-box {
@@ -20,21 +28,20 @@ html, body {
     height: fit-content;
     align-items: center;
     justify-content: center;
-    margin-right: 10px;
 }
 
 .nav-box a {
+    padding: 10px;
     position: relative;
     text-decoration: none;
-    color: #000;
     font-family: Arial, Helvetica, sans-serif;
-    font-weight: 200;
+    font-weight: bold;
     margin: 7px;
-    border-bottom: 1px solid #00000000;
+    color: #000;
 }
 
 .nav-box a:hover{
-    border-bottom: 1px solid #000;
+    color: #fff; background-color: #707070; border-radius: 15px;
 }
 
 
@@ -64,13 +71,16 @@ html, body {
 }
 
 .main-nav .container a:hover {
-    border-bottom: 1px solid #000;
+    color: #fff; background-color: #707070; border-radius: 15px;
 }
 
 /* Active state for the current category */
 .main-nav .container a.active,
 .main-nav .container a[aria-current="page"] {
-    border-bottom: 2px solid #000;
+    font-weight: bolder; 
+    color: white; 
+    background-color: #333; 
+    border-radius: 15px;
     font-weight: 600;
 }
 
@@ -147,6 +157,10 @@ html, body {
     color: initial;
 }
 
+.nav-box .nl-3:hover{
+    background-color: rgb(152, 83, 255);
+}
+
 @keyframes pulse {
     0% { background-position: 0% 50%; }
     100% { background-position: 100% 50%; }
@@ -154,5 +168,31 @@ html, body {
 
 .keterangan {
     text-align: center;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
+.main-page .main-nav a {
+    color: #fff;
+    padding: 5px;
+}
+
+.ig-accounts {
+    margin: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+.ig-accounts a{
+    color: #fff; background-color: rgb(104, 4, 255); border-radius: 15px;
+    padding: 5px;
+}
+
+.nav-bar .nav-box a {
+    color: #fff;
+}
+
+.nav-bar .nav-box .nl-3 {
+    color: rgb(129, 45, 255);
+}

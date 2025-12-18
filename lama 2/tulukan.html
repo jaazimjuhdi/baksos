@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Tulukan — Gallery</title>
+</head>
+<body>
+  <nav class="nav-bar">
+    <div class="nav-box">
+      <a class="nl-1" href="index.html">HOME</a>
+      <a class="nl-2" href="gallery.html" style="text-decoration: underline; font-weight: bold;">GALLERY</a>
+      <a class="nl-3" href="social.html">SOCIAL MEDIA</a>
+    </div>
+  </nav> 
+  <div class="main-page">
+    <div class="main-nav">
+      <div class="container">
+            <a href="gallery.html">Semua</a>
+            <span>/</span>
+            <a href="tulukan.html" class="active" aria-current="page">Tulakan</a>
+            <span>/</span>
+            <a href="pacitan.html">Pacitan</a>
+            <span>/</span>
+            <a href="ib.html">Imam Bukhari</a>
+        </div>
+    </div>
+    <div class="keterangan">Tekan gambar untuk resolusi penuh</div>
+    
+
+    <h2 style="padding: 20px; font-family: Arial, Helvetica, sans-serif;">Tulakan</h2>
+
+    <!-- Use thumbnails for faster previews -->
+    <div class="gallery">
+      <a class="gallery-item" href="image.html?img=design.png">
+        <img loading="lazy" decoding="async" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-full="design.png" onerror="this.onerror=null;this.src=this.dataset.full;"
+             srcset="thumbs/design-400.jpg 400w, design.png 1200w"
+             sizes="(max-width:600px) 80vw, 200px" alt="design">
+      </a>
+      <a class="gallery-item" href="image.html?img=image.png">
+        <img loading="lazy" decoding="async" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-full="image.png" onerror="this.onerror=null;this.src=this.dataset.full;"
+             srcset="thumbs/image-400.jpg 400w, image.png 1200w"
+             sizes="(max-width:600px) 80vw, 200px" alt="image">
+      </a>
+    </div>
+  </div>
+  <script src="scripts/image-loader.js" defer></script>
+</body>
+</html>

@@ -8,7 +8,7 @@
   <style>
     .social { padding: 3rem 1.5rem 0 1.5rem; font-family: Arial, Helvetica, sans-serif; }
     .accounts { max-width: 600px; margin: 0 auto; }
-    .accounts a { display:block; padding: .6rem 0; text-decoration:none; color:#000; border-bottom:1px solid #eee; }
+    .accounts a { display:block; padding: .6rem 0; text-decoration:none; color:#000; }
     .qr { font-family: Arial, Helvetica, sans-serif; display: flex; flex-direction: column; padding: 0; margin: 0 4%;}
     .qr p {
       text-align: center;
@@ -23,6 +23,17 @@
       display: flex;
       justify-content: center;
     }
+    .first, .second{
+      display: flex;
+      flex-direction: row;
+    }
+    .first p, .second p {
+      width: fit-content;
+    }
+    .first a, .second a {
+      padding: 0;
+      padding-left: 5px;
+    }
   </style>
 </head>
 <body>
@@ -30,7 +41,7 @@
     <div class="nav-box">
       <a class="nl-1" href="index.html">HOME</a>
       <a class="nl-2" href="gallery.html">GALLERY</a>
-      <a class="nl-3" href="social.html" style="text-decoration: underline; font-weight: bold;">SOCIAL MEDIA</a>
+      <a class="nl-3" href="social.html"style="font-weight: bolder; color: #fff; background-color: rgb(104, 4, 255); border-radius: 15px;">SOCIAL MEDIA</a>
     </div>
   </nav>
 
@@ -40,8 +51,9 @@
       <p style="text-align:center;">Dapatkan kabar-kabar tentang pondok dan angkatan 22 Imam Bukhari</p>
 
       <div class="accounts">
-        <a href="https://www.instagram.com/inoffensive.integrity?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener" style="color: blue;">Instagram: @inoffensive.integrity</a>
-        <a href="https://www.youtube.com/@ppib" target="_blank" rel="noopener"  style="color: blue;">YouTube: Ponpes Imam Bukhari</a>
+        <div class="first"><p>Instagram: </p><a href="https://www.instagram.com/inoffensive.integrity?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener" style="color: rgb(153, 37, 255);">@inoffensive.integrity</a></div>
+        <div class="second"><p>YouTube: </p><a href="https://www.youtube.com/@ppib" target="_blank" rel="noopener"  style="color: rgb(244, 0, 0);">Ponpes Imam Bukhari</a></div>
+        
       </div>
     </section>
     <div class="qr">
@@ -50,7 +62,13 @@
       <img src="Baksos Infinity.png" alt="qr code baksos">
       </div>
       <p>(https://jaazimjuhdi.github.io/baksos)</p>
-      <p>Website ini dikembangkan oleh Jaazim Juhdi Aufa santri kelas 12 PonPes Imam Bukhari bekerja sama dengan Zahran Alawy</p>
+      <p>Website ini dikembangkan oleh <strong>Jaazim Juhdi Aufa</strong>, santri kelas 12 PonPes Imam Bukhari. Sebagai bagian dari upaya dakwah dan dokumentasi sosial. Bekerja sama dengan <strong>Zahran Alawy</strong> (bagian kreatif acara bakti sosial ini). Bakti sosial ini dibimbing oleh <strong>Ustadz Rahmat حفظه الله</strong>, diketuai oleh <strong>Hafiz Juhair</strong> beserta wakilnya <strong>Ahmad Rijal Dwi Putra</strong>.</p>
+      <p class="ig-accounts">
+        <a href="https://www.instagram.com/jaazim.juhdi/#" target="_blank">@jaazim.juhdi</a>
+        <a href="https://www.instagram.com/zaranh_a/#" target="_blank">@zaranh_a</a>
+        <a href="https://www.instagram.com/areel_gk/#" target="_blank">@areel_gk</a>
+        <a href="https://www.instagram.com/hafizjuhaiir/#" target="_blank">@hafizjuhair</a>
+      </p>
     </div>
      
   </main>
