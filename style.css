@@ -12,6 +12,7 @@ body{
     background-image: url(sawah.jpg);
     background-blend-mode: darken;
     background-size: cover;
+    background-repeat: no-repeat;
     background-attachment: fixed;
 }
 
@@ -95,12 +96,15 @@ body{
     gap: 2em;
 }
 
+
+
 .gallery-item { 
+    border-radius: 10px;
     position: relative;
     aspect-ratio: 5/4;
     overflow: hidden; 
     width: 100%;
-    max-width: 200px;
+    max-width: 300px;
     display: block;
     cursor: pointer;
     text-decoration: none;
