@@ -10,6 +10,12 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     };
 
+    // If src is placeholder, load the data-full attribute first
+    const full = img.dataset.full;
+    if (full && img.src.includes('base64')) {
+      img.src = full;
+    }
+
     // If already loaded from cache
     if (img.complete && img.naturalWidth > 0) {
       markLoaded();
