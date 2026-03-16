@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 const imagePath = photo.thumb ? photo.thumb : phtoto.full;
 
-                addPhoto(`$docs/${photo.full}`);
+                addPhoto(`docs/${photo.full}`);
             });
         } catch (error) {
             console.error('Gagal memuat galeri:', error);
