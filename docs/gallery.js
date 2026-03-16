@@ -58,8 +58,10 @@ document.addEventListener('DOMContentLoaded', function() {
             allPhotos.forEach(photo => {
                 // Gunakan path 'full' yang dikirim oleh server.py
                 // Karena file index.html dan server berjalan di tempat yang sama, 
-                // kita cukup arahkan ke folder docs/
-                addPhoto(`${photo.full}`);
+                
+                const imagePath = photo.thumb ? photo.thumb : phtoto.full;
+
+                addPhoto(`$docs/${photo.full}`);
             });
         } catch (error) {
             console.error('Gagal memuat galeri:', error);
