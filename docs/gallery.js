@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Gunakan path 'full' yang dikirim oleh server.py
                 // Karena file index.html dan server berjalan di tempat yang sama, 
                 // kita cukup arahkan ke folder docs/
-                addPhoto(`docs/${photo.full}`);
+                addPhoto(`${photo.full}`);
             });
         } catch (error) {
             console.error('Gagal memuat galeri:', error);
