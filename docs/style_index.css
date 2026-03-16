@@ -1,0 +1,245 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: arial;
+    /* font-weight: 200; */
+}
+
+h4 {
+    font-weight: 200;
+}
+
+body {
+    /* background-color: red; */
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+.top {
+    margin: 10px 0;
+    background-color: #fff;
+    width: 100vw;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.top-in {
+    gap: 10px;
+    background-color: #fff;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.top-in #left {
+    height: 100%;
+    width: auto;
+    display: flex;
+    align-items: center;
+}
+
+.top-in #left img{
+    width: auto;
+    height: 80%;
+}
+
+.top-in #center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* background-color: #fff; */
+}
+
+.top-in #center h4 {
+    /* flex-wrap: nowrap; */
+    font-size: 0.9em;
+    font-family: Arial;
+    font-weight: 200;
+}
+
+.top-in #center h4:first-child {
+    color: #009348ff;
+}
+
+.top-in #center h4:last-child {
+    color: #ff923bff;
+}
+
+.top-in #right {
+    height: 100%;
+    width: auto;
+}
+
+.top-in #right img {
+    height: 100%;
+}
+
+.center {
+    width: 100vw;
+    background-image: url(home_page/1.webp);
+    background-position: center;
+    background-size: cover;
+    min-height: 35vh;
+    max-height: 45vh;
+}
+
+.center #filter {
+    width: 100%;
+    height: 100%;
+    background-color: #00000071;
+    display: flex;
+    align-items: center;
+}
+
+#filter #container {
+    display: flex;
+    flex-direction: column;
+    min-width: fit-content;
+    height: fit-content;
+    gap: 10px;
+    margin: 0 3vw;
+}
+
+#filter h1, #filter h4 {
+    width: fit-content;
+    color: #fff;
+    font-family: arial;
+}
+
+#filter h4 {
+    font-weight: 200;
+    max-width: 700px;
+}
+
+.bottom {
+    /* width: 100vw;
+    background-color: blue;
+    height: 33vh; */
+    height: fit-content;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* background-color: rgba(0, 0, 255, 0.226); */
+}
+
+.bottom #top {
+    margin: 15px 0;
+    width: 100vw;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bottom #top a {
+    padding: 6px;
+    width: 140px;
+    height: fit-content;
+    display: flex;
+    border-color: #ff923bff;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 7px;
+    text-decoration: none;
+
+    &:hover {
+        background-color: #ff923bff;
+        h4 {
+            color: white;
+        }
+    }
+}
+
+
+
+.bottom #top a h4 {
+    font-family: arial;
+    font-weight: 200;
+    text-align: center;
+    color: #ff923bff;
+}
+
+#bottom {
+    width: 100vw;
+    height: fit-content;
+    /* background-color: rgba(127, 255, 212, 0.689); */
+    display: flex;
+    justify-content: center;
+}
+
+#bottom #container {
+    margin: 0 15px 20px 15px;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    padding: 10px;
+    min-width: fit-content;
+    /* max-width: 90vw; */
+    border-color: #000000;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 7px;
+}
+
+#bottom #title {
+    text-align: center;
+}
+
+#bottom #container #terkait {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}
+
+.person {
+    display: flex;
+    flex-direction: row;
+    /* background-color: pink; */
+    height: fit-content;
+    /* border-color: red; */
+    /* border-style: solid; */
+    /* border-width: 5px; */
+}
+
+.picture {
+    overflow: hidden;
+    width: 80px;
+    height: 80px;
+    clip-path: circle();
+}
+
+.picture img {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    
+}
+
+.p6 .picture img {
+    width: 150%;
+    height: auto;
+    left: -25%;
+    top: -25%;
+}
+
+.p-text {
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: baseline;
+    margin-left: 10px;
+}
+
+.p-text h4 {
+    text-align: left;
+}

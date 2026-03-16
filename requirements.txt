@@ -1,0 +1,2 @@
+# Server Python - hanya gunakan built-in libraries
+# File ini dibuat untuk kompatibilitas dengan Render.com

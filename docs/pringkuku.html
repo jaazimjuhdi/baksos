@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Pringkuku | Baksos Infinity</title>
+
+        <meta content="Baksos 2026 with Infinity" name="title">
+        <meta name="type" content="gallery">
+        <meta content="og-image.png" name="image">
+        <meta name="url" content="https://jaazimjuhdi.github.io/baksos">
+        <meta name="description" content="Klik untuk melihat foto-foto bakti sosial yang diselenggarakan oleh Pondok Pesantren Imam Bukhari Solo tahun 2026">
+        <meta name="keywords" content="baksos infinity, baksos ib">
+
+        <link rel="stylesheet" href="style_gallery.css">
+        <link rel="icon" href="logo-ospim.png">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <script src="gallery.js" defer></script>
+        <style>
+            /* Modal styling */
+            .modal {
+                display: none;
+                position: fixed;
+                z-index: 1000;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0,0,0,0.8);
+                animation: fadeIn 0.3s;
+            }
+
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+
+            .modal-content {
+                margin: auto;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+                position: relative;
+            }
+
+            .modal img {
+                max-width: 90%;
+                max-height: 90%;
+                object-fit: contain;
+                animation: zoomIn 0.3s;
+            }
+
+            @keyframes zoomIn {
+                from { transform: scale(0.9); opacity: 0; }
+                to { transform: scale(1); opacity: 1; }
+            }
+
+            .close {
+                position: absolute;
+                right: 20px;
+                top: 20px;
+                color: white;
+                font-size: 32px;
+                font-weight: bold;
+                cursor: pointer;
+                z-index: 1001;
+                transition: color 0.2s;
+            }
+
+            .close:hover {
+                color: #bbb;
+            }
+
+            /* Make images clickable */
+            .gallery .item {
+                cursor: pointer;
+                transition: transform 0.2s;
+            }
+
+            .gallery .item:hover {
+                transform: scale(1.02);
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar">
+            <div class="sidebar">
+                <div class="nav-title">
+                    <h1 class="title">Bakti Sosial</h1>
+                    <li class="x-svg" onclick="hideSideBar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="black"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a></li>
+                   
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="galeri.html">Semua</a></li>
+                </ul>
+            </div>
+            <div class="nav-container">
+                <div class="nav-title">
+                    <img src="logo-ospim.webp" alt="logo-ospim">
+                    <h1>Bakti Sosial</h1>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="galeri.html">Semua</a></li>
+                </ul>
+                <div class="menu-toggle" id="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+        <div class="gallery-section">
+            <div class="gallery-switch">
+                <a href="tulakan.html">Tulakan</a>
+                <a href="pringkuku.html">Pringkuku</a>
+            </div>
+            <div class="caution">
+                <p style="text-align: center; margin-bottom: 20px;">(Klik foto untuk memperbesar)</p>
+            </div>
+            <div class="gallery" id="gallery"></div>
+        </div>
+
+        <!-- Modal untuk preview full-size image -->
+        <div id="imageModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <img id="modalImage" src="" alt="Preview">
+            </div>
+        </div>
+
+        <script>
+            function hideSideBar(){
+                const sidebar = document.querySelector('.sidebar')
+                sidebar.style.display = 'none'
+            }
+        </script>
+    </body>
+</html>
