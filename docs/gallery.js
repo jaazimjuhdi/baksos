@@ -55,13 +55,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
-            allPhotos.forEach(photo => {
-                // Gunakan path 'full' yang dikirim oleh server.py
-                // Karena file index.html dan server berjalan di tempat yang sama, 
-                
-                const imagePath = photo.thumb ? photo.thumb : phtoto.full;
+           allPhotos.forEach(photo => {
+                // Pilih thumbnail agar loading cepat dan server tidak overload (502)
+                // Jika thumbnail tidak ada, baru pakai foto asli
+                const imagePath = photo.thumb ? photo.thumb : photo.full;
 
-                addPhoto(`docs/${photo.full}`);
+                // Gabungkan dengan folder 'docs' tanpa simbol $ tambahan
+                const finalUrl = `docs/${imagePath}`;
+
+                // Panggil fungsi addPhoto
+                addPhoto(finalUrl);
             });
         } catch (error) {
             console.error('Gagal memuat galeri:', error);
