@@ -37,45 +37,36 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // --- BAGIAN FETCH DINAMIS ---
     
-    // 1. Deteksi URL API (Lokal vs Production)
-    const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-    // Ganti URL di bawah ini dengan URL dari Render kamu nanti setelah deploy
-    const BASE_URL = isLocalhost ? '' : 'https://baksos.onrender.com';
+    // Fungsi untuk mengambil data dari API Railway
+    async function loadGallery() {
+        try {
+            // Kita panggil endpoint /api/gallery yang sudah kamu buat di server.py
+            const response = await fetch('/api/gallery');
+            const data = await response.json();
 
-    // 2. Tentukan endpoint berdasarkan nama file HTML saat ini
-    let endpoint = '/api/gallery'; // Default
-    if (window.location.pathname.includes('tulakan.html')) endpoint = '/api/tulakan';
-    if (window.location.pathname.includes('pringkuku.html')) endpoint = '/api/pringkuku';
+            // Kosongkan galeri sebelum diisi foto asli
+            gallery.innerHTML = '';
 
-    // 3. Ambil data dari server.py
-    fetch(`${BASE_URL}${endpoint}`)
-        .then(response => response.json())
-        .then(data => {
-            // Bersihkan galeri sebelum mengisi (jika ada isinya)
-            gallery.innerHTML = ''; 
+            // Gabungkan foto dari tulakan dan pringkuku untuk ditampilkan
+            const allPhotos = [...data.tulakan, ...data.pringkuku];
 
-            // Jika data berupa objek (dari /api/gallery), ambil semua fotonya
-            let photosToDisplay = [];
-            if (data.tulakan && data.pringkuku) {
-                photosToDisplay = [...data.tulakan, ...data.pringkuku];
-            } else {
-                photosToDisplay = data; // Jika sudah berupa array langsung
-            }
-
-            if (photosToDisplay.length === 0) {
-                gallery.innerHTML = '<p style="text-align:center; width:100%;">Tidak ada foto ditemukan.</p>';
+            if (allPhotos.length === 0) {
+                gallery.innerHTML = '<p>Belum ada foto di folder docs.</p>';
                 return;
             }
 
-            photosToDisplay.forEach(photo => {
-                // Path gambar harus menyertakan BASE_URL jika di production
-                // photo.full berisi "tulakan/nama.jpg", browser akan mencarinya di docs/tulakan/nama.jpg
-                const fullPath = isLocalhost ? photo.full : `${BASE_URL}/${photo.full}`;
-                addPhoto(fullPath, photo.name);
+            allPhotos.forEach(photo => {
+                // Gunakan path 'full' yang dikirim oleh server.py
+                // Karena file index.html dan server berjalan di tempat yang sama, 
+                // kita cukup arahkan ke folder docs/
+                addPhoto(`docs/${photo.full}`);
             });
-        })
-        .catch(error => {
-            console.error('Error loading photos:', error);
-            gallery.innerHTML = '<p style="text-align:center; width:100%;">Gagal memuat foto dari server.</p>';
-        });
+        } catch (error) {
+            console.error('Gagal memuat galeri:', error);
+            gallery.innerHTML = '<p>Gagal mengambil data dari server.</p>';
+        }
+    }
+
+    // Jalankan fungsi untuk memuat foto
+    loadGallery();
 });
