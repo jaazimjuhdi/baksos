@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Preview | Baksos Infinity</title>
+
+        <meta content="Baksos 2026 with Infinity" name="title">
+        <meta name="type" content="preview">
+        <meta content="og-image.png" name="image">
+        <meta name="url" content="https://jaazimjuhdi.github.io/baksos">
+        <meta name="description" content="Preview foto dari bakti sosial Pondok Pesantren Imam Bukhari Solo">
+
+        <link rel="stylesheet" href="style_gallery.css">
+        <link rel="icon" href="logo-ospim.png">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <script src="preview.js" defer></script>
+        <style>
+            .preview-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                min-height: 100vh;
+                padding: 20px;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            }
+
+            .preview-wrapper {
+                background: white;
+                border-radius: 12px;
+                padding: 30px;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+                max-width: 800px;
+                width: 100%;
+            }
+
+            .preview-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 20px;
+            }
+
+            .preview-title {
+                font-size: 24px;
+                font-weight: 500;
+                color: #333;
+                margin: 0;
+            }
+
+            .back-button {
+                background: #667eea;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 6px;
+                cursor: pointer;
+                font-size: 14px;
+                transition: background 0.3s;
+            }
+
+            .back-button:hover {
+                background: #764ba2;
+            }
+
+            .photo-container {
+                display: flex;
+                justify-content: center;
+                margin-bottom: 30px;
+                min-height: 300px;
+                align-items: center;
+            }
+
+            .photo-container img {
+                max-width: 100%;
+                max-height: 600px;
+                border-radius: 8px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            }
+
+            .photo-info {
+                text-align: center;
+                margin-bottom: 25px;
+            }
+
+            .photo-name {
+                font-size: 18px;
+                color: #555;
+                margin: 10px 0;
+                word-break: break-word;
+            }
+
+            .photo-folder {
+                font-size: 14px;
+                color: #999;
+                margin: 5px 0;
+            }
+
+            .action-buttons {
+                display: flex;
+                gap: 15px;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .download-button {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                border: none;
+                padding: 12px 30px;
+                border-radius: 25px;
+                cursor: pointer;
+                font-size: 16px;
+                font-weight: 500;
+                transition: transform 0.3s, box-shadow 0.3s;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+
+            .download-button:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+            }
+
+            .download-button:active {
+                transform: translateY(0);
+            }
+
+            .download-icon::before {
+                content: "⬇";
+            }
+
+            .loading {
+                text-align: center;
+                font-size: 18px;
+                color: #667eea;
+                padding: 50px 20px;
+            }
+
+            .error-message {
+                background: #fee;
+                color: #c33;
+                padding: 20px;
+                border-radius: 8px;
+                text-align: center;
+                font-size: 16px;
+            }
+
+            @media (max-width: 768px) {
+                .preview-wrapper {
+                    padding: 20px;
+                }
+
+                .preview-header {
+                    flex-direction: column;
+                    gap: 15px;
+                }
+
+                .preview-title {
+                    font-size: 20px;
+                }
+
+                .download-button {
+                    padding: 10px 20px;
+                    font-size: 14px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="preview-container">
+            <div class="preview-wrapper">
+                <div class="preview-header">
+                    <h1 class="preview-title">Preview Foto</h1>
+                    <button class="back-button" onclick="goBack()">← Kembali</button>
+                </div>
+
+                <div id="content">
+                    <div class="loading">Memuat foto...</div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

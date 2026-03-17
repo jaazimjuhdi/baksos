@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const gallery = document.getElementById('gallery');
     
-    const addPhoto = (src, altName) => {
+    const addPhoto = (src, altName, folder, filename) => {
         const index = gallery.children.length;
         const ratio = ratioSequence[index % ratioSequence.length];
         
@@ -28,8 +28,13 @@ document.addEventListener('DOMContentLoaded', function() {
         img.src = src;
         img.alt = altName || 'Photo';
         
-        // Tambahkan event click untuk memperbesar jika diinginkan
+        // Tambahkan event click untuk navigasi ke halaman preview
         img.style.cursor = 'pointer';
+        img.addEventListener('click', function() {
+            // Navigasi ke preview page dengan parameter folder dan filename
+            const encodedFilename = encodeURIComponent(filename);
+            window.location.href = `preview.html?folder=${folder}&file=${encodedFilename}`;
+        });
         
         item.appendChild(img);
         gallery.appendChild(item);
@@ -40,28 +45,50 @@ document.addEventListener('DOMContentLoaded', function() {
     // Fungsi untuk mengambil data dari API Railway
     async function loadGallery() {
         try {
-            // Kita panggil endpoint /api/gallery yang sudah kamu buat di server.py
-            const response = await fetch('/api/gallery');
+            // Deteksi halaman mana yang sedang dibuka
+            const currentPage = window.location.pathname;
+            let apiEndpoint = '/api/gallery'; // Default: semua foto
+            
+            if (currentPage.includes('tulakan.html')) {
+                apiEndpoint = '/api/tulakan';
+            } else if (currentPage.includes('pringkuku.html')) {
+                apiEndpoint = '/api/pringkuku';
+            }
+            
+            // Kita panggil endpoint yang sesuai
+            const response = await fetch(apiEndpoint);
             const data = await response.json();
 
-            // Kosongkan galeri sebelum diisi foto asli
+            // Kosongkan galeri sebelum diisi foto
             gallery.innerHTML = '';
 
-            // Gabungkan foto dari tulakan dan pringkuku untuk ditampilkan
-            const allPhotos = [...data.tulakan, ...data.pringkuku];
+            // Tentukan array foto yang akan ditampilkan
+            let photosToDisplay = [];
+            
+            if (apiEndpoint === '/api/gallery') {
+                // Jika galeri.html, gabungkan semua foto
+                photosToDisplay = [...data.tulakan, ...data.pringkuku];
+            } else {
+                // Jika kategori spesifik, gunakan array dari response
+                photosToDisplay = data;
+            }
 
-            if (allPhotos.length === 0) {
-                gallery.innerHTML = '<p>Belum ada foto di folder docs.</p>';
+            if (photosToDisplay.length === 0) {
+                gallery.innerHTML = '<p>Belum ada foto di folder ini.</p>';
                 return;
             }
 
-            allPhotos.forEach(photo => {
+            photosToDisplay.forEach(photo => {
                 // 1. Pilih thumbnail jika ada, kalau tidak ada pakai foto asli
                 const imagePath = photo.thumb ? photo.thumb : photo.full;
+                
+                // 2. Extract folder dari path (e.g., "tulakan/DSC_3908.webp" -> folder="tulakan")
+                const pathParts = photo.full.split('/');
+                const folder = pathParts[0];
+                const filename = pathParts[1];
 
-                // 2. JANGAN pakai 'docs/' di sini karena akan menyebabkan double path
-                // Langsung masukkan imagePath-nya saja
-                addPhoto(`${imagePath}`); 
+                // 3. Panggil addPhoto dengan parameter folder dan filename
+                addPhoto(`${imagePath}`, filename, folder, filename); 
             });
         } catch (error) {
             console.error('Gagal memuat galeri:', error);
