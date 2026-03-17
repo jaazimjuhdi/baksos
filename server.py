@@ -1,4 +1,4 @@
-from http.server import HTTPServer, SimpleHTTPRequestHandler
+from http.server import HTTPServer, SimpleHTTPRequestHandler, ThreadingHTTPServer  # Add ThreadingHTTPServer
 from urllib.parse import urlparse
 import json
 import os
@@ -107,9 +107,9 @@ class MyHandler(SimpleHTTPRequestHandler):
             self.wfile.write(json.dumps(photos).encode())
         else:
             super().do_GET()
-
-# Get port dari environment variable, default ke 8000 untuk local development
+            
+# Replace HTTPServer with ThreadingHTTPServer
 port = int(os.environ.get('PORT', 8000))
-server = HTTPServer(('0.0.0.0', port), MyHandler)
+server = ThreadingHTTPServer(('0.0.0.0', port), MyHandler)  # Changed this line
 print(f"Server berjalan di port {port}")
 server.serve_forever()
